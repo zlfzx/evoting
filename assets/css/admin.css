@@ -1,0 +1,19 @@
+.tengah{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+}
+.justify-content-arround{
+	justify-content: space-around;
+}
+.garistengah{
+	height: 100px;
+	border: 1px solid grey;
+}
+
+.img-kandidat{
+	width: 150px;
+	height: 150px;
+}

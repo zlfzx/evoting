@@ -1,0 +1,1 @@
+- user otomatis logout dalam waktu 2 menit setelah selesai memilih apabila belum melakukan logout
