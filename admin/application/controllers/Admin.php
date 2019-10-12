@@ -115,14 +115,14 @@ class Admin extends CI_Controller {
 		$ket = $this->input->post('ket');
 		$foto = $_FILES['foto'];
 
-		$config['upload_path'] = './../assets/img/kandidat';
+		$config['upload_path'] = '../assets/img/kandidat';
 		$config['allowed_types'] = 'jpg|png|gif';
 		$config['remove_spaces'] = TRUE;
 		$this->load->library('upload', $config);
 		if (!empty($foto['name'])) {
 			if (!$this->upload->do_upload('foto')) {
 				$data['error'] = $this->upload->display_errors();
-				$this->session->set_flashdata('error', $data['error']);
+				$this->session->set_flashdata('error', $data['error'].' '.$config['upload_path']);
 				redirect('kandidat');
 			}
 			else{
