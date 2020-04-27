@@ -1,9 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 date_default_timezone_set('Asia/Jakarta');
-/**
- * 
- */
+
 class Auth extends CI_Controller{
 	function __construct(){
 		parent::__construct();
@@ -19,7 +17,11 @@ class Auth extends CI_Controller{
 	function actlogin(){
 		$username = $this->input->post('username');
 		$password = md5($this->input->post('password'));
-		$d = $this->db->query('SELECT * FROM admin WHERE username="'.$username.'" AND password="'.$password.'"');
+		// $d = $this->db->query('SELECT * FROM admin WHERE username="'.$username.'" AND password="'.$password.'"');
+		$d = $this->db->get_where('admin', [
+			'username' => $username,
+			'password' => $password
+		]);
 		if ($d->num_rows() > 0) {
 			$admin = $d->row();
 			$data = [
@@ -31,7 +33,12 @@ class Auth extends CI_Controller{
 			];
 			$this->session->set_userdata($data);
 			$last = Date('Y-m-d H:i:s');
-			$this->db->query('UPDATE admin SET last_login="'.$last.'" WHERE id_admin='.$this->session->id);
+			// $this->db->query('UPDATE admin SET last_login="'.$last.'" WHERE id_admin='.$this->session->id);
+			$this->db->where([
+				'id_admin' => $this->session->id
+			])->update('admin', [
+				'last_login' => $last
+			]);
 			redirect('');
 		}
 		else{

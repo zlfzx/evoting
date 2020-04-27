@@ -1,8 +1,20 @@
-###################
-E-VOTING
+###################  
+E-VOTING  
 ###################
 
 E-Voting adalah sebuah aplikasi voting berbasis web yang dibuat dengan Framework PHP Codeigniter.
+
+# Halaman
+### Admin
+`http://<url>/admin`  
+username: zulfi  
+password: zulfi  
+
+### User
+`http://<url>/`
+
+### Hasil Voting
+`http://<url>/hasil`
 
 CodeIgniter is an Application Development Framework - a toolkit - for people
 who build web sites using PHP. Its goal is to enable you to develop projects

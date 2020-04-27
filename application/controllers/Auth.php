@@ -23,7 +23,8 @@ class Auth extends CI_Controller{
 	function actlogin(){
 		$username = $this->input->post('username');
 		$passwd = md5($this->input->post('password'));
-		$d = $this->db->query('SELECT * FROM pemilih WHERE username="'.$username.'" AND password="'.$passwd.'"')->row();
+		// $d = $this->db->query('SELECT * FROM pemilih WHERE username="'.$username.'" AND password="'.$passwd.'"')->row();
+		$d = $this->db->get_where('pemilih', ['username' => $username, 'password' => $passwd])->row();
 		if ($username == $d->username && $passwd == $d->password) {
 			$v = $this->db->query('SELECT * FROM voting')->num_rows();
 			if ($v < 1) {
